@@ -39,25 +39,19 @@ public class Controle {
 
         boolean temFuncionarioElegivel = false;
 
+
         for (Funcionario funcionario : funcionarios) {
             if (departamentosComMaiorVenda.contains(funcionario.getDepartamento())) {
                 temFuncionarioElegivel = true;
-                break;
-            }
-        }
-
-        if (!temFuncionarioElegivel) {
-            System.out.println("Código 2: Nenhum funcionário elegivel nos departamentos");
-            return;
-        }
-
-        for (Funcionario funcionario : funcionarios) {
-            if (departamentosComMaiorVenda.contains(funcionario.getDepartamento())) {
                 if (funcionario.getSalario().compareTo(new BigDecimal(150000)) < 0 && !funcionario.isGerente()) {
                     funcionario.setSalario(funcionario.getSalario().add(new BigDecimal(2000)));
                 } else {
                     funcionario.setSalario(funcionario.getSalario().add(new BigDecimal(1000)));
                 }
+            }
+            if (!temFuncionarioElegivel) {
+                System.out.println("Código 2: Nenhum funcionário elegivel nos departamentos");
+                return;
             }
         }
     }
